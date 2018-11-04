@@ -54,14 +54,17 @@ def print_words(filename):
         wordcount = Counter(f.read().split())
 
         for item in sorted(wordcount.items()):
-            print("{}\t{}".format(*item))
+            print("{}, {}".format(*item))
 
 
 def print_top(filename):
     with open(filename) as f:
         wordcount = Counter(f.read().split())
 
-        # for item in wordcount.items().sort(key=)        
+        wordtup = sorted(wordcount.items(), key=lambda x:x[1], reverse=True)
+        
+        for tup in wordtup[:20]:
+            print "{}, {}".format(tup[0], tup[1])
 
 ###
 
